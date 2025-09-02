@@ -8,7 +8,8 @@ const resourceroute=require("./routes/resourceRout.js");
 const { uploadToR2 } = require("./r2");
 
 const cors=require("cors");
-;
+const Subject=require("./models/subject.js");
+
 
 
 dotenv.config();   // loads .env
@@ -48,8 +49,17 @@ const PORT = process.env.PORT
 // }
 // deleteAllBranches();
 
-app.use("/api/resources", resourceroute);
+// async function add(subname,subcode) {
+//     await Subject.create({
+//         subjectName:subname,
+//         subjectCode:subcode,
+//     });
+//     console.log("Branch added successfully!");
+// }
+// add("DBMS","9FC04");
+
 app.use(cors())
+app.use("/api/resources", resourceroute);
 
 app.get("/", async (req, res) => {
   res.send(await Branch.find({}));

@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 const resourceSchema=new mongoose.Schema({
-    // subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
+    subject_id: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
     subject:String,
     resourceType: { type: String, enum: ["notes", "previous_paper", "video", "book"] },
     title: String,

@@ -4,6 +4,8 @@ const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const { v4: uuidv4 } = require("uuid");
 const Resource = require("../models/resourse.js"); // your schema
 const dotenv = require("dotenv");
+// const subject=require("../models/subject.js");
+const Subject = require("../models/subject.js");
 
 const router = express.Router();
 
@@ -27,6 +29,7 @@ const s3 = new S3Client({
 router.post("/upload", upload.single("file"), async (req, res) => {
   try {
     const { subject, resourceType, title, branch, sem } = req.body;
+    const sub_id=await Subject.findOne({subjectName:subject},"_id");
 
     if (!req.file) {
       return res.status(400).json({ error: "No file uploaded" });
@@ -52,6 +55,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
 
     // Save in MongoDB
     const resource = new Resource({
+      subject_id:sub_id,
       subject,
       resourceType,
       title,
