@@ -11,7 +11,7 @@ const { uploadToR2 } = require("./r2");
 const cors=require("cors");
 const Subject=require("./models/subject.js");
 
-
+const placementpreproute=require("./routes/placementprepRoute.js");
 
 dotenv.config();   // loads .env
 
@@ -59,9 +59,10 @@ const PORT = process.env.PORT
 // }
 // add("DBMS","9FC04");
 
-app.use(cors())
+app.use(cors());
 app.use("/api/resources", resourceroute);
-app.use("api/examprep",)
+// app.use("api/examprep",);
+app.use("/api/placementprep/", placementpreproute);
 
 
 
