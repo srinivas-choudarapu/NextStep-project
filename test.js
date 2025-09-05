@@ -273,7 +273,9 @@ connectDB().then(async ()=>{
         // const result=await Subject.insertMany(data);
         // const result = await Subject.deleteMany({});
         // const result=await Branchsub.deleteMany({});
-        const result=await Branchsub.insertMany(branchsubdata);
+        // const result=await Branchsub.insertMany(branchsubdata);
+
+        
         console.log("successfully inserted");
         process.exit();
     }catch(err){
