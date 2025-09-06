@@ -11,3 +11,7 @@ Route to show the sub topics in the main topics like ARRAYS, hashmaps and all is
 
 Route to get the questions and questions links by giving subtopic as arrays or Strings or any topic we get the questions oriented to the topic
     ==>/api/placementprep/topics/dsa/:subtopic
+
+Route to get the login and register end point : 
+    ==> /api/auth/login/
+    ==> /api/auth/register/
