@@ -6,12 +6,12 @@ const Branch=require("./models/branch.js");
 
 const resourceroute=require("./routes/resourceRout.js");
 const exampreproute=require("./routes/examprepRoute.js");
+const placementpreproute=require("./routes/placementprepRoute.js");
 const { uploadToR2 } = require("./r2");
 
 const cors=require("cors");
 const Subject=require("./models/subject.js");
 
-const placementpreproute=require("./routes/placementprepRoute.js");
 
 dotenv.config();   // loads .env
 
@@ -64,7 +64,7 @@ app.use("/api/resources", resourceroute);
 // app.use("api/examprep",);
 app.use("/api/placementprep/", placementpreproute);
 
-
+app.use("/api/examprep/" , exampreproute);
 
 
 app.get("/", async (req, res) => {
