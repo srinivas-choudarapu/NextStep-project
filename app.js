@@ -7,6 +7,15 @@ const Branch=require("./models/branch.js");
 const resourceroute=require("./routes/resourceRout.js");
 const exampreproute=require("./routes/examprepRoute.js");
 const placementpreproute=require("./routes/placementprepRoute.js");
+const registerloginroute=require("./routes/loginin.js");
+
+const cookieParser = require('cookie-parser');
+
+
+
+//
+const {protect}=require("./middlewares/protectmiddleware.js");
+
 const { uploadToR2 } = require("./r2");
 
 const cors=require("cors");
@@ -59,10 +68,17 @@ const PORT = process.env.PORT
 // }
 // add("DBMS","9FC04");
 
+app.use(cookieParser());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+
 app.use("/api/resources", resourceroute);
 // app.use("api/examprep",);
-app.use("/api/placementprep/", placementpreproute);
+app.use("/api/placementprep/", protect,placementpreproute);
+app.use("/api/auth/",registerloginroute);
 
 app.use("/api/examprep/" , exampreproute);
 
