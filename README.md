@@ -15,3 +15,15 @@ Route to get the questions and questions links by giving subtopic as arrays or S
 Route to get the login and register end point : 
     ==> /api/auth/login/
     ==> /api/auth/register/
+
+
+
+
+
+
+Routes for examprep module :
+    Routes to get subjects list of a particular branch and sem are variable:
+        ==>/api/examprep/branch/sem/
+    routes to get notes or pyq download links (mention type as pyq or notes):
+        ==>/api/examprep/branch/sem/subid/type
+        
